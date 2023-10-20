@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloSecretController {
   @Value("${sm://greeting}")
-  String greeting="HI";
+  String greeting;
 
   @GetMapping("/")
   public String hello() {
