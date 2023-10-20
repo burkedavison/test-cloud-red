@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-      
+
   build:
     runs-on: ubuntu-latest
     
@@ -22,3 +22,26 @@ jobs:
 
     - name: Build with Maven and push image using Jib
       run: mvn compile jib:build -Djib.to.auth.username=${{ secrets.DOCKERHUB_USERNAME }} -Djib.to.auth.password=${{ secrets.DOCKERHUB_PASSWORD }}
+      
+  deploy:
+    
+    needs: build
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+        
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+    
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1.1.1
+      with:
+        workload_identity_provider: projects/547168271352/locations/global/workloadIdentityPools/my-pool/providers/my-provider
+        service_account: my-service-account@test-secret-402616.iam.gserviceaccount.com
+          
+    - name: Deploy to Google Cloud Run
+      run: |
+        gcloud run deploy demo-app --image=docker.io/postavshik84/demo:latest --platform managed --region us-central1 --allow-unauthenticated

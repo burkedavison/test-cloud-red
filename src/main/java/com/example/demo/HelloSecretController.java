@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloSecretController {
-  @Value("${sm://petclinic-db-password}")
+  @Value("${sm://greeting}")
   String greeting;
 
   @GetMapping("/")
