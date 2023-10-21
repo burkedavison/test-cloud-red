@@ -34,4 +34,4 @@ jobs:
       run: mvn compile jib:build
 
     - name: Deploy to Google Cloud Run
-      run: gcloud run deploy demo-app --image=docker.io/postavshik84/demo:latest --platform managed --region us-central1 --allow-unauthenticated
+      run: gcloud run deploy demo-app --image=gcr.io/test-secret-402616/demo:latest --platform managed --region us-central1 --allow-unauthenticated
