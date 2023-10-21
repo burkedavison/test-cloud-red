@@ -20,7 +20,7 @@
 
 		<!-- Docker -->
         <docker.jib-maven-plugin.version>3.4.0</docker.jib-maven-plugin.version>
-        <docker.image.prefix>postavshik84</docker.image.prefix>
+        <google-project-id>test-secret-402616</google-project-id>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -77,9 +77,8 @@
                         <image>eclipse-temurin:17-jre</image>
                     </from>
                     <to>
-                        <image>docker.io/${docker.image.prefix}/${project.artifactId}</image>
+                        <image>gcr.io/${google-project-id}/${project.artifactId}</image>
                         <tags>
-                            <tag>${project.version}</tag>
                             <tag>latest</tag>
                         </tags>
                     </to>
