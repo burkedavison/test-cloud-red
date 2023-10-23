@@ -20,7 +20,7 @@
 
 		<!-- Docker -->
         <docker.jib-maven-plugin.version>3.4.0</docker.jib-maven-plugin.version>
-        <google-project-id>test-secret-402616</google-project-id>
+        <google-project-id>burkedavison-temurin-14</google-project-id>
 	</properties>
 	<dependencies>
 		<dependency>
